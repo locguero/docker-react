@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t locguero/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true locguero/docker-react npm run test
